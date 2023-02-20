@@ -276,6 +276,43 @@ class User2 {
       return Api(error: null, result: null, data: null);
     }
   }
+  static Future? getUserProfileApi() async {
+    HiveController<UserModel> hiveCtl =
+    HiveController<UserModel>(HiveBox.userBox);
+    final user = await hiveCtl.readList();
+    try {
+      final res = await http.post(
+        Uri.parse(apiHelper.apiUri + apiHelper.userProfile),
+        headers: {'token': user[0].accessToken!},
+      );
+      return json.decode(res.body);
+    } on Exception catch (error) {
+      /// if network exception
+      return null;
+    }
+  }
+
+  static Future? updateUserProfileApi(Map<String, dynamic> profileInfo) async {
+    HiveController<UserModel> hiveCtl =
+    HiveController<UserModel>(HiveBox.userBox);
+    final user = await hiveCtl.readList();
+
+    try {
+      final res = await http.post(
+        Uri.parse(apiHelper.apiUri + apiHelper.updateUserProfile),
+        body: {
+          "first_name": profileInfo['first_name'],
+          "last_name": profileInfo['last_name'],
+          "address_1": profileInfo['address'] ?? '',
+        },
+        headers: {'token': user[0].accessToken!},
+      );
+      return json.decode(res.body);
+    } on Exception catch (error) {
+      /// if network exception
+      return null;
+    }
+  }
 
 }
 

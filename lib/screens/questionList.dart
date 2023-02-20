@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:oghala/screens/detailQuestion.dart';
+import 'package:oghala/screens/profile.dart';
 
 class questionList extends StatefulWidget {
   const questionList({Key? key}) : super(key: key);
@@ -23,57 +24,79 @@ class _questionListState extends State<questionList> {
       body: Column(
         children: [
           SizedBox(
-            height: screenheight * 0.07,
+            height: screenheight * 0.05,
           ),
           Center(
-            child: SizedBox(
-              width: screenwidth * 0.9,
-              height: 80,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0x10000000),
-                      blurRadius: 10,
-                      spreadRadius: -20,
-                      offset: Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: TextField(
-                  cursorColor: Colors.red,
-                  decoration: InputDecoration(
-                    labelText: 'Search For The Question ...',
-                    suffixIcon: Icon(
-                      CupertinoIcons.search,
-                      color: Color(0x90606060),
-                      size: 30,
-                    ),
-                    labelStyle: TextStyle(color: Color(0x90606060)),
-                    filled: true,
-                    fillColor: Color(0xFFDFDFDF),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(15.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  width: screenwidth * 0.8,
+                  height: 80,
+                  child: Center(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(15),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0x10000000),
+                            blurRadius: 10,
+                            spreadRadius: -20,
+                            offset: Offset(0, 4),
+                          ),
+                        ],
                       ),
-                      borderSide: BorderSide(
-                        color: Colors.white,
-                        width: 1,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(15.0),
-                      ),
-                      borderSide: BorderSide(
-                        color: Colors.black38,
-                        width: 1,
+                      child: TextField(
+                        cursorColor: Color(0xFFBB2226),
+                        decoration: InputDecoration(
+                          labelText: 'Search For The Question ...',
+                          suffixIcon: Icon(
+                            CupertinoIcons.search,
+                            color: Color(0x90606060),
+                            size: 30,
+                          ),
+                          labelStyle: TextStyle(color: Color(0x90606060)),
+                          filled: true,
+                          fillColor: Color(0xFFDFDFDF),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(15.0),
+                            ),
+                            borderSide: BorderSide(
+                              color: Colors.white,
+                              width: 1,
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(15.0),
+                            ),
+                            borderSide: BorderSide(
+                              color: Colors.black38,
+                              width: 1,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
+                SizedBox(width: 10,),
+                GestureDetector(
+                  onTap: (){
+                    Get.to(profileScreen());
+                  },
+                  child: CircleAvatar(
+                    radius: 25,
+                    backgroundColor: Colors.grey,
+                    child: Icon(
+                      FontAwesomeIcons.userLarge,
+                      color: Colors.white,
+                    ),
+                  ),
+                )
+              ],
             ),
           ),
           Align(

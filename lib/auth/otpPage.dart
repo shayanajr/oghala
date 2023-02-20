@@ -117,7 +117,7 @@ class _otpScreenState extends State<otpScreen> {
                                 height: 52,
                                 child: ElevatedButton(
                                   style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.transparent,
+                                    backgroundColor: Color(0xFFBB2226),
                                     shadowColor: Colors.transparent,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10),
