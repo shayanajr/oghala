@@ -51,12 +51,12 @@ class _tagListState extends State<tagList> {
                     return Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(25),
-                        color: Colors.grey
+                        color:Color(0xFFD3D3D3)
                       ),
                       child: Column(
                         mainAxisAlignment:MainAxisAlignment.center,
                         children: [
-                          Icon(category.icon,size: 30,),
+                          Icon(category.icon,size: 30,color: Colors.grey,),
                           SizedBox(height: 20,),
                           Text(category.name,
                             textAlign: TextAlign.center,
